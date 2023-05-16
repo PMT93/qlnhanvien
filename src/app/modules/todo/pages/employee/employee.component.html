@@ -1,0 +1,128 @@
+<div class="ds container">
+    <div class="ds row">
+        <div class="ds col-12 col-lg-8" style="overflow-y: scroll">
+            <h1 class="ds text-center">Quản lí nhân viên</h1>
+            <hr>
+            <div class="ds row">
+                <div class="ds col-md-11">
+                    <div class="ds form-group">
+                        <input type="text"
+                               class="ds form-control"
+                               placeholder="Nhập tên hoặc mã nhân viên"
+                               [(ngModel)]="textSearch"
+                               (keyup.enter)="load(textSearch)"
+                        >
+                    </div>
+                </div>
+
+              <div class="ds col-md-1 " role="button" (click)="load(textSearch)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="ds row">
+                <div class="ds col-md-12">
+                    <table class="ds table table-stripe table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Mã nhân viên</th>
+                                <th>Tên nhân viên</th>
+                                <th>Chức vụ</th>
+                                <th>Lương</th>
+                                <th>Địa chỉ</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+                                <th>Ngày sinh</th>
+                                <th>Ngày tạo</th>
+
+                                <th style="width: 165px;">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of listEmployee; let i = index;">
+                                <td>{{i + 1}}</td>
+                                <td>{{item.code}}</td>
+                                <td>{{item.name}}</td>
+
+                                <td>{{item.position === 'QUAN_LY' ? 'Quản lý' : item.position === 'NHAN_VIEN' ? 'Nhân viên' : item.position}}</td>
+                                <td>{{item.salary | number}} đồng/giờ</td>
+                                <td>{{item.address}}</td>
+                                <td>{{item.phoneNumber}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.birthday | date:"dd/MM/yyyy"}}</td>
+                                <td>{{item.createDate | date:"hh:mm dd/MM/yyyy"}}</td>
+
+                                <td class="ds action">
+                                    <button class="ds btn btn-primary btn-sm" (click)="editEmployee(item)">Chỉnh sửa</button>
+                                    <button class="ds btn btn-danger  btn-sm" (click)="deleteEmployee(item)">Xoá</button>
+                                </td>
+                            </tr>
+                            <tr *ngIf="listEmployee.length == 0">
+                                <td colspan="5">
+                                    Không có dữ liệu
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="ds row d-block d-lg-none ">
+                <div class="ds col-md-12">
+                    <a href="#" class="ds btn btn-primary">Thêm mới nhân viên</a>
+                </div>
+            </div>
+        </div>
+        <div class="ds d-none d-lg-block col-lg-4">
+            <form #frm="ngForm" (submit)="onSubmit(frm)">
+                <div class="ds mb-3">
+                    <label for="inputTitle" class="ds form-label">Tên nhân viên</label>
+                    <input type="text" [(ngModel)]="selectedEmployee.name" name="name" class="ds form-control" id="inputTitle" placeholder="Nhập tên nhân viên" required>
+                </div>
+
+                <div class="ds mb-3">
+                  <label for="position" class="ds form-label">Chức vụ</label>
+                  <select class="form-select"
+                          id="position" name="position"
+                          aria-label="Default select example"
+                          [(ngModel)]="selectedEmployee.position"
+                          (ngModelChange)="positionChange($event)"
+                          required
+                  >
+                    <option value="NHAN_VIEN">Nhân viên</option>
+                    <option value="QUAN_LY">Quản lý</option>
+                  </select>
+
+                </div>
+
+                <div class="ds mb-3">
+                  <label for="phone" class="ds form-label">Số điện thoại</label>
+                  <input type="text" class="ds form-control" [(ngModel)]="selectedEmployee.phoneNumber" name="phone" id="phone" placeholder="Nhập số điện thoại" required>
+                </div>
+
+                <div class="ds mb-3">
+                  <label for="salary" class="ds form-label">Mức lương 1 giờ (đồng)</label>
+                  <input type="text" class="ds form-control" [(ngModel)]="selectedEmployee.salary" name="salary" id="salary" placeholder="Mức lương / giờ" required disabled>
+                </div>
+
+                <div class="ds mb-3">
+                  <label for="email" class="ds form-label">Email</label>
+                  <input type="email" class="ds form-control" [(ngModel)]="selectedEmployee.email" name="email" id="email" placeholder="Nhập email" required>
+                </div>
+
+                <div class="ds mb-3">
+                  <label for="address" class="ds form-label">Địa chỉ</label>
+                  <input type="text" class="ds form-control" [(ngModel)]="selectedEmployee.address" name="address" id="address" placeholder="Nhập địa chỉ" required>
+                </div>
+
+                <div class="ds mb-3">
+                    <label for="birthday" class="ds form-label">Ngày sinh</label>
+                    <input type="date" [(ngModel)]="selectedEmployee.birthday" name="birthday" class="ds form-control" id="birthday" required>
+                </div>
+
+                <button type="submit" class="ds btn btn-primary">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>

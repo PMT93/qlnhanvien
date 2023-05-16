@@ -1,0 +1,25 @@
+.mat-card-header {
+  border-bottom: 1px #ccc solid;
+}
+
+.mat-card-content {
+  padding-top: 10px;
+}
+
+button {
+  display: block;
+}
+
+.footer {
+  gap: 10px;
+}
+
+.status-unfinished {
+  font-weight: bold;
+  color: #ab0404;
+}
+
+.status-complete, .status-undefined {
+  font-weight: bold;
+  color: #04ab33;
+}

@@ -1,0 +1,27 @@
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+table {
+    margin-top: 20px;
+    .action {
+        display: flex;
+    }
+}
+
+th {
+    font-weight: bold;
+}
+
+td {
+    vertical-align: middle;
+}
+
+.btn {
+    margin-right: 10px;
+}

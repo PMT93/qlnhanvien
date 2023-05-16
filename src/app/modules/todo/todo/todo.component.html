@@ -1,0 +1,35 @@
+<div class="ds nav">
+  <div class="ds container">
+    <ul>
+      <li>
+        <a [routerLink]="['/todo/dashboard']" routerLinkActive="active">Trang chủ</a>
+      </li>
+      <li>
+        <a [routerLink]="['/todo/employee']" routerLinkActive="active">Quản lý nhân viên</a>
+      </li>
+      <li>
+        <a [routerLink]="['/todo/division']" routerLinkActive="active">Phân chia công việc</a>
+      </li>
+      <li>
+        <a [routerLink]="['/todo/report']" routerLinkActive="active"> Báo cáo</a>
+      </li>
+      <li>
+        <a [routerLink]="['/todo/about']" routerLinkActive="active">Giới thiệu</a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <button class="ds btn btn-light btn-sm mt-1" (click)="logout()">Đăng xuất</button>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container-gaming">
+
+  <main class="ds container" [ngClass]="url">
+    <router-outlet></router-outlet>
+  </main>
+  <footer class="ds d-flex justify-content-center">
+    <em>Ứng dụng quản lý quán net</em>
+  </footer>
+</div>

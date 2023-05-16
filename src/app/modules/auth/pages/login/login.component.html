@@ -1,0 +1,20 @@
+<div class="login-wrap row">
+  <div class="login-body col-md-3">
+    <h1>Đăng nhập</h1>
+    <form #frm="ngForm" (submit)="onSubmit(frm)">
+      <div class="ds form-group">
+        <label for="email">Email</label>
+        <input type="email" [(ngModel)]="username" class="ds form-control" id="email" name="email" required>
+      </div>
+      <div class="ds form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" [(ngModel)]="password" class="ds form-control" id="password" name="password" required>
+      </div>
+      <button type="submit" class="ds btn btn-primary">Đăng nhập</button>
+      <hr>
+      <div class="ds d-flex justify-content-center">
+        <button class="ds btn btn-light" routerLink="/auth/register">Đăng ký</button>
+      </div>
+    </form>
+  </div>
+</div>

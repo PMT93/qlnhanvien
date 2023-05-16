@@ -1,0 +1,72 @@
+<form class="ds container" #frm="ngForm" (submit)="onSubmit(frm)">
+  <div class="ds row">
+    <div class="ds col-12 col-lg-12 mat-card-header">
+      <h1 class="ds mat-card-title">Giao công việc mới</h1>
+    </div>
+    <div class="ds row mat-card-content">
+      <div class="ds d-none d-lg-block col-lg-12">
+        <div>
+          <div class="ds mb-3">
+            <label for="inputTitle" class="ds form-label">Tiêu đề</label>
+            <input type="text" [(ngModel)]="todo.title" name="name" class="ds form-control" id="inputTitle" placeholder="Nhập tiêu đề dễ nhớ" required>
+          </div>
+          <div class="ds mb-3">
+            <label for="address" class="ds form-label">Nội dung</label>
+            <textarea type="text" class="ds form-control" [(ngModel)]="todo.content" name="address" id="address" cols="4" placeholder="Nhập nội dung công việc" required></textarea>
+          </div>
+
+          <div class="ds mb-3">
+            <label for="assign" class="ds form-label">Giao cho</label>
+            <select class="form-select"
+                    id="assign" name="assign"
+                    aria-label="Default select example"
+                    [(ngModel)]="todo.assignee"
+                    required
+            >
+              <option *ngFor="let employee of employees" [value]="employee.code">
+                {{employee.name}} - {{employee.phoneNumber}}
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="ds mb-3">
+            <span [ngClass]="'status-' + todo.status">Trạng thái: {{todo.status === 'unfinished' ? 'Chưa hoàn thành': 'Đã hoàn thành'}}</span>
+          </div>
+
+          <div class="ds mb-3">
+
+            <label for="birthdaytime">Thời gian bắt đầu làm việc</label>
+            <input type="datetime-local" id="birthdaytime" name="birthdaytime" class="form-control" [(ngModel)]="todo.startTime" required>
+          </div>
+
+          <div class="ds mb-3">
+            <label for="time" class="ds form-label">Ca làm việc</label>
+            <select class="form-select"
+                    id="time" name="time"
+                    aria-label="Default select example"
+                    [(ngModel)]="todo.time"
+                    required
+            >
+              <option value= 4 >4 tiếng</option>
+              <option value= 6 >6 tiếng</option>
+              <option value= 8 >8 tiếng</option>
+              <option value= 10 >10 tiếng</option>
+              <option value= 12 >12 tiếng</option>
+
+            </select>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row justify-content-end footer">
+      <button type="button" class="ds btn btn-danger" (click)="dialogRef.close()">Hủy bỏ</button>
+      <button type="submit" class="ds btn btn-primary">Giao việc</button>
+    </div>
+
+  </div>
+</form>

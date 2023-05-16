@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+.mat-checkbox .mat-checkbox-frame {
+  transform: scale(2);
+}
+
+.mat-checkbox-checked .mat-checkbox-background {
+  transform: scale(2);
+}

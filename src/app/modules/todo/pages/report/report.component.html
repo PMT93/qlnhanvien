@@ -1,0 +1,63 @@
+<div class="ds container">
+  <div class="ds row">
+    <div class="ds col-12 col-lg-12">
+      <h1 class="ds text-center">Bảng lương nhân viên</h1>
+
+      <div class="row">
+
+        <div class="d-flex justify-content-center align-items-center">
+          <ngx-charts-bar-vertical
+            [view]="view"
+            [results]="dataChart"
+            [scheme]="colorScheme"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [barPadding]="2">
+          </ngx-charts-bar-vertical>
+        </div>
+
+      </div>
+
+      <div class="ds row">
+
+        <div class="ds col-md-12">
+          <table class="ds table table-stripe table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Mã nhân viên</th>
+              <th>Tên nhân viên</th>
+              <th>Chức vụ</th>
+              <th>Thời gian làm việc</th>
+              <th>Tiền lương</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of employees; let i = index;">
+              <td>{{i + 1}}</td>
+              <td>{{item.code}}</td>
+              <td>{{item.name}}</td>
+
+              <td>{{item.position === 'QUAN_LY' ? 'Quản lý' : item.position === 'NHAN_VIEN' ? 'Nhân viên' : item.position}}</td>
+              <td>{{item.workingTime}} (giờ)</td>
+              <td>{{(item.salary ?? 0) * (item.workingTime ?? 0) | number}} VND</td>
+
+            </tr>
+            <tr *ngIf="employees.length == 0">
+              <td colspan="5">
+                Không có dữ liệu
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

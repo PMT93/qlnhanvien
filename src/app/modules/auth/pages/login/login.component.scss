@@ -1,0 +1,12 @@
+.login-wrap {
+  background: linear-gradient(to top, rgba(225, 223, 223, 0.1), rgba(42, 1, 68, 0.8)), url('/assets/image/bacground-login.png') no-repeat top center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #FFFFFF;
+
+  .login-body {
+    margin: auto;
+  }
+}

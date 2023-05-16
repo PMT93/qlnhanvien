@@ -1,0 +1,55 @@
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+table {
+    margin-top: 20px;
+    .action {
+        display: flex;
+    }
+}
+
+th {
+    font-weight: bold;
+}
+
+td {
+    vertical-align: middle;
+}
+
+.btn {
+    margin-right: 10px;
+}
+
+.body-bot {
+  padding-bottom: 8px;
+}
+
+.status-unfinished {
+  font-weight: bold;
+  color: #ab0404;
+}
+
+.status-complete, .status-undefined {
+  font-weight: bold;
+  color: #04ab33;
+}
+
+.card {
+  position: relative;
+  .example-margin {
+    position: absolute;
+    right: 20px;
+    top: 3px;
+
+  }
+}
+.card-title{
+  color: #eb7a7a;
+}
+

@@ -1,0 +1,50 @@
+.nav {
+    background: rgb(8, 31, 70);
+    &>.container {
+        display: flex;
+        justify-content: space-between;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            display: inline-flex;
+            a {
+                padding: 8px 20px;
+                text-decoration: none;
+                color: #fff;
+                &.active {
+                    background: rgb(5, 125, 210);
+                }
+            }
+        }
+    }
+}
+
+.container-gaming {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(30, 3, 45, 0.8)), url('/assets/image/bacground-login.png') no-repeat top center;
+  background-size: cover;
+
+  main {
+    margin-top: 20px;
+    padding: 15px;
+    box-shadow: 1px 1px 13px 1px rgba(0, 0, 0, 0.159);
+    height: calc(100vh - 100px);
+    background: rgba(255, 255, 255, 0.5);
+    overflow: scroll;
+
+    &.about {
+      background: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  em {
+    color: #b6b0b0;
+  }
+}
+
+footer {
+    font-size: 80%;
+    padding: 8px;
+}
